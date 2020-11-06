@@ -14,7 +14,7 @@ public class ReaderWriterStorage implements Storage {
     private final ReentrantLock writerLock = new ReentrantLock();
     private final ReentrantLock readerLock = new ReentrantLock();
     private final Condition storageCondition = readerLock.newCondition();
-    private int readerCounter = 0;
+    private volatile int readerCounter = 0;
 
     @Override
     public final void put(final Task task) {

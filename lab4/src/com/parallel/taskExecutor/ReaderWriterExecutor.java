@@ -5,6 +5,8 @@ import com.parallel.model.Storage;
 import com.parallel.model.consumerSupplier.Consumer;
 import com.parallel.model.consumerSupplier.Supplier;
 
+import static java.lang.Thread.sleep;
+
 public class ReaderWriterExecutor implements Executor {
 
     @Override
@@ -14,12 +16,11 @@ public class ReaderWriterExecutor implements Executor {
         final Consumer consumer1 = new Consumer(storage);
         final Consumer consumer2 = new Consumer(storage);
         final Consumer consumer3 = new Consumer(storage);
-        final Supplier supplier1 = new Supplier(2000, 1000, 300, 200, tasksToCreate, storage);
-        final Supplier supplier2 = new Supplier(4000, 3000, 1000, 500, tasksToCreate, storage);
+        final Supplier supplier1 = new Supplier(200, 10, 300, 200, tasksToCreate, storage);
+        final Supplier supplier2 = new Supplier(400, 30, 1000, 500, tasksToCreate, storage);
 
         supplier1.start();
         supplier2.start();
-
         consumer1.start();
         consumer2.start();
         consumer3.start();
