@@ -24,7 +24,6 @@ public class Philosopher extends Thread {
         try {
             while (eatCount < 3) {
                 fork1.acquire();
-                Thread.sleep(500);
                 fork2.acquire();
                 System.out.println("Philosopher " + id + " is eating...");
                 sleep(3000);
